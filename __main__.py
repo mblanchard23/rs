@@ -33,6 +33,7 @@ def qdf(query_string):
     b = datetime.datetime.now()
     print 'Total runtime: %d seconds' % ((b-a).total_seconds())
     df = pandas.DataFrame(c.fetchall())
+    conn.rollback()
     if not df.empty:
         df.columns = [x[0] for x in c.description]
         return df
